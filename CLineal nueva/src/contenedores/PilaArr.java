@@ -11,8 +11,11 @@ public class PilaArr implements OperacionesCL1 {
 	protected int tamPila;
 	
 	public PilaArr(int tamPila) {
+		//ingresa el tamanio de la pila
 		this.tamPila = tamPila;
+		//ingreso al array el tamanio
 		this.pila = new Object[this.tamPila];
+		//el limpiar pone la cabeza en -1
 		limpiar(); 
 	}
 	
@@ -41,6 +44,7 @@ public class PilaArr implements OperacionesCL1 {
 	}
 	
 	public boolean estaLlena() {
+		//pregunta si la cabeza es igual al tamanio -1 porque comienza en 0
 		return (this.cabeza == this.tamPila - 1);
 	}	
 		

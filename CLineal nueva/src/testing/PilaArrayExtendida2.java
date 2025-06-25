@@ -14,7 +14,8 @@ public class PilaArrayExtendida2 extends PilaArr implements OperacionesTp{
     public Object topePila(){
         Object tope = null;
         if(!estaVacia()){
-            tope = this.pila[this.cabeza];
+            tope = sacar();
+            meter(tope);
         }
         return tope;
     }

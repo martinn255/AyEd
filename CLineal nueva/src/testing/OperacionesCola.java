@@ -5,8 +5,8 @@ import contenedores.PilaArr;
 
 public class OperacionesCola extends ColaArr {
     //ColaArr col;
-    public OperacionesCola(int tam){
-        super(tam);
+    public OperacionesCola(int tamCola){
+        super(tamCola);
         //this.col = new ColaArr(tam);
     }
     //Si no tengo los atributos de geter tengo que recorrer y guardarlos en un aux y volverlos a meter

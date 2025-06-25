@@ -12,7 +12,7 @@ public class Nodo {
 		this.nodoInfo = nodoInfo;
 		this.nextNodo = nextNodo; 
 	}
-	
+	//setea
 	public void setNodoInfo(Object nodoInfo) {
 		this.nodoInfo = nodoInfo; 
 	}
@@ -20,7 +20,7 @@ public class Nodo {
 	public void setNextNodo(Nodo nextNodo) {
 		this.nextNodo = nextNodo; 
 	}
-	
+	//muestra
 	public Object getNodoInfo() {
 		return this.nodoInfo; 
 	}
