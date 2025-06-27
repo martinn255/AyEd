@@ -1,5 +1,5 @@
 package contenedores;
-
+//Clase base para implementar una Matriz de adyacencia 
 public class MatrizArr {
 	protected Object[][] matriz;
 	protected int nroFilas, nroColumnas;

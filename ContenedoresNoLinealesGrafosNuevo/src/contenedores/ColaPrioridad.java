@@ -1,6 +1,7 @@
 package contenedores;
 import recursos.Nodo;
-
+//La cola de prioridad es igual a una cola colun solo que se va ordenando segun su prioridad osea
+//de menor a mayor
 public abstract class ColaPrioridad extends ColaLinkedList{
 	public abstract boolean esMenor(Object objA, Object objB);
 	public abstract boolean esMayor(Object objA, Object objB);

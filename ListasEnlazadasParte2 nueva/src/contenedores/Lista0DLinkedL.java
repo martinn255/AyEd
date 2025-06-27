@@ -3,6 +3,7 @@ import recursos.*;
 
 public abstract class Lista0DLinkedL implements OperacionesCL2 {
 	protected NodoDoble frenteL, finalL;
+	//da la pos del ultimo elemento de la lista enlazada
 	protected int ultimo;
 	
 	public Lista0DLinkedL() {
@@ -30,10 +31,12 @@ public abstract class Lista0DLinkedL implements OperacionesCL2 {
 				System.out.println("Error eliminar. Posicion inexistente ");
 			}else{		
 				if (posicion == 0) { 
-					//eliminacion de la primera parte u Nodo
+					//eliminacion al principio
 					if (this.frenteL == this.finalL) {
+						//si solo hay un elemento
 						limpiar();						
 					}else{
+						//si hay mas nodos hay que desconectar
 						this.frenteL = this.frenteL.getNextNodo();
 						this.frenteL.setPrevNodo(null);
 						this.ultimo--;

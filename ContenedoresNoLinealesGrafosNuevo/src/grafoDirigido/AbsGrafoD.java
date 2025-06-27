@@ -1,24 +1,65 @@
 package grafoDirigido;
 import contenedores.*;
 import recursos.*;
-
+//Contiene las Ope de reco en profundidad y en amplitus
+// Y Contiene el algoritmo de Dijktra y Floyd
 public abstract class AbsGrafoD extends AbsGrafo implements OperacionesGD{
 	
 	protected MatrizGrafo matrizCostoF,matrizCaminoF;
 	protected ListaDoubleLinkedL listaDistancia, listaCamino, listaSolucion;
+
+	private boolean band=true;
 
 	public AbsGrafoD(int ordenGrafo){
 		super(ordenGrafo);
 	}
 		
 	public abstract void cargarGrafo();
-	
+
 	public void muestraDijkstra(int startVertex){
+		double currCost; int w;
+		double menorvert=1000;
+		int su=0;
+		
+		Dijkstra(startVertex);
+		System.out.println();
+		for (int v=0; v<getOrden();v++){
+			System.out.println();
+			System.out.println("vertice " + v);
+			if (v!=startVertex){
+				currCost=(double)this.listaDistancia.devolver(v);
+				System.out.println("costo desde " + startVertex + " a " + v + "->" + currCost);
+			
+				System.out.println("mostrando un camino desde "+ v + " a " + startVertex);
+				if(currCost<menorvert){
+					menorvert = currCost;
+					su=v;
+				}
+				
+				w=(int)this.listaCamino.devolver(v);
+				
+				do{
+					System.out.println("camino " + w);
+					w=(int)this.listaCamino.devolver(w);
+				}while(w!=-1);//recordemos que al inicializar cambiamos todos los -1 salvo el startVertex
+			}			
+		}
+		
+		if(this.band==true){
+			Dijkstra(su);
+			this.band =false;
+
+		}
+		
+	}
+	
+	/*public void muestraDijkstra(int startVertex){
 		double currCost; int w;
 		
 		Dijkstra(startVertex);
-		
+		System.out.println();
 		for (int v=0; v<getOrden();v++){
+			System.out.println();
 			System.out.println("vertice " + v);
 			if (v!=startVertex){
 				currCost=(double)this.listaDistancia.devolver(v);
@@ -35,7 +76,7 @@ public abstract class AbsGrafoD extends AbsGrafo implements OperacionesGD{
 			}			
 		}
 		
-	}
+	}*/
 	
 	private void Dijkstra(int startVertex){
 		double minCost, currCost, arcCost; int minVertex, vertex;
@@ -44,6 +85,7 @@ public abstract class AbsGrafoD extends AbsGrafo implements OperacionesGD{
 		this.listaCamino = new ListaDoubleLinkedL();
 		this.listaSolucion = new ListaDoubleLinkedL();
 		
+		//Carga la Solucion,Camino en -1  ,Distancia en infinito osea las listas
 		for (int i=0; i<getOrden();i++){			
 			this.listaSolucion.insertar(-1, i);
 			this.listaCamino.insertar(-1, i);
@@ -62,7 +104,7 @@ public abstract class AbsGrafoD extends AbsGrafo implements OperacionesGD{
 		for (int i=1; i<getOrden();i++){
 			minCost=infinito;
 			minVertex=-1;
-			
+			//Calcula el menor costo del vertice posible
 			for (int w=0; w<getOrden();w++){
 				if (w!=startVertex){
 					currCost=(double) this.listaDistancia.devolver(w);// 
@@ -78,7 +120,7 @@ public abstract class AbsGrafoD extends AbsGrafo implements OperacionesGD{
 				this.listaSolucion.reemplazar(minVertex, minVertex);
 				this.listaDistancia.reemplazar(minCost, minVertex);
 					
-				
+				//Despues de encontrar el menor vertice busca si se puede actualizar alguna distancia
 				for (int v=0;v<getOrden();v++){
 					vertex=(int)this.listaSolucion.devolver(v);
 					if (vertex==-1){
@@ -116,10 +158,11 @@ public abstract class AbsGrafoD extends AbsGrafo implements OperacionesGD{
 		this.matrizCaminoF=new MatrizGrafo(this.ordenGrafo);
 		this.matrizCostoF=new MatrizGrafo(this.ordenGrafo);
 		double costoF;
+		//Poner 0 en las diagonales
 		for(int i=0;i<ordenGrafo;i++){
 			matrizCostoF.actualizar((double)0, i, i);}
 		
-		for(int i=0;i<ordenGrafo;i++){
+		for(int i=0;i<ordenGrafo;i++){		//para elementos que nos son la diagonal 
 			for(int j=0;j<ordenGrafo;j++){
 				if(i!=j){
 					costoF=(double)matrizCosto.devolver(i, j);
@@ -129,11 +172,12 @@ public abstract class AbsGrafoD extends AbsGrafo implements OperacionesGD{
 		}
 		
 		
-		
+		//Ir variando por el orden del grafo  
 		Object costo;
 		for(int k=0;k<ordenGrafo;k++){
 			for(int i=0;i<ordenGrafo;i++){
 				for(int j=0;j<ordenGrafo;j++){
+					//Aqui pregunta si el costo es menor
 					if(((Double)matrizCostoF.devolver(i, k)).doubleValue()+((Double)matrizCostoF.devolver(k, j)).doubleValue()<((Double)matrizCostoF.devolver(i, j)).doubleValue()){
 						costo=new Double(((Double)matrizCostoF.devolver(i, k)).doubleValue()+((Double)matrizCostoF.devolver(k, j)).doubleValue());
 						matrizCostoF.actualizar(costo, i, j);

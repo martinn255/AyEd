@@ -31,7 +31,8 @@ public class TestGrafoD {
 				System.out.println("buscar camino Floyd (-1 para terminar): ");
 				i=scanner.nextInt();
 			}*/
-			grafo.muestraBEA();
+			//grafo.muestraBEA();
+			grafo.muestraFloyd();
 			
 			
 		} else{

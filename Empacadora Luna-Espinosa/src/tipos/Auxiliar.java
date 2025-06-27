@@ -19,12 +19,22 @@ public class Auxiliar {
         }    
         
     }
+    public Object desapilar(){
+        Lata aux = null;
+        if(!this.pila.estaVacia()){
+            aux = (Lata)this.pila.sacar();
+        }else{
+            System.out.println("pila principal Vacia");
+        }
+        return aux;
+    }
     public boolean pilaAuxLlena(){
         return this.pilaAux.estaLlena();
     }
     public boolean pilaAuxVacia(){
         return this.pilaAux.estaVacia();
     }
+    //Si solo la muetro y mantener los elelementos uso un auxiliar cosa qie no tengo
     public void mostarPila(){
         int cont=0;
         String cadena="";

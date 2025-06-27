@@ -12,7 +12,7 @@ public class Test {
 		obj6 = new Integer(77);
 
 		
-		ListaEnteros lista = new ListaEnteros();
+		/*ListaEnteros lista = new ListaEnteros();
 		
 		lista.insertar(obj1, 0); // inserto inicio
 		lista.insertar(obj2, 0);
@@ -35,22 +35,24 @@ public class Test {
 		
 		lista.reemplazar(new Integer(666), 0);
 		
-		lista.muestra();
+		lista.muestra();	*/
 				
 		
-//		
-//		ListaEnteros2 lista2 = new ListaEnteros2();
-//		lista2.insertar(obj1);
-//		lista2.insertar(obj2);		
-//		lista2.insertar(obj3);
-//		lista2.insertar(obj4);
-//		
-//		lista2.muestra();
-//		System.out.println("****");
-//		
-//		lista2.insertar(obj5);
-//		lista2.insertar(obj6);
-//		lista2.muestra();
+		//Ya probado
+		ListaEnteros2 lista2 = new ListaEnteros2();
+		lista2.insertar(obj1);
+		lista2.insertar(obj2);		
+		lista2.insertar(obj3);
+		lista2.insertar(obj4);
+		
+		lista2.muestra();
+		System.out.println("****");
+		
+		lista2.insertar(obj5);
+		lista2.insertar(obj6);
+		lista2.muestra();
+
+		System.out.println("Pos: " + lista2.buscar(100));
 		
 		
 	}

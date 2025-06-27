@@ -51,8 +51,8 @@ public abstract class Lista2DLinkedL extends Lista0DLinkedL implements Operacion
 	public abstract boolean esMenor(Object elemento1, Object elemento2);
 	public abstract boolean esMayor(Object elemento1, Object elemento2);
 	
-	// implementar algun metodo de b�squeda
-	public int buscar(Object elemento){
+	// implementar algun metodo de busqueda
+	/*public int buscar(Object elemento){
 		// implementar!!!
 		int posicion =-1;
 		int contador=0;
@@ -70,6 +70,30 @@ public abstract class Lista2DLinkedL extends Lista0DLinkedL implements Operacion
 		}	
 
 		return posicion;
+	}*/
+	//Busqueda Binaria en lista
+	public int buscar(Object elemento){
+		int ini=0;
+		int fin = tamanio()-1;
+		int med = (ini+fin)/2;
+		Object temp;
+		temp= devolver(med);
+
+		while(ini<=fin && !iguales(temp,elemento)){
+			if(esMayor(temp, elemento)){
+				fin=med-1;
+			}else{
+				ini=med+1;
+			}
+			med=(ini+fin)/2;
+			temp=devolver(med);
+		}
+		if(ini<=fin){
+			return med;
+		}else{
+			return -1;
+		}
+		
 	}
 	
 }

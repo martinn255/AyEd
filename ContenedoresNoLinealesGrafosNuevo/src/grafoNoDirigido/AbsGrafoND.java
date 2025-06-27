@@ -1,7 +1,8 @@
 package grafoNoDirigido;
 import contenedores.*;
 import recursos.*;
-
+//Contiene las Ope de recorridos en Profundidad y en Amplitud
+//Contiene el algoritmo de Prim y Kruscal
 public abstract class AbsGrafoND extends AbsGrafo implements OperacionesGND{
 	
 	public AbsGrafoND(int ordenGrafo){
